@@ -1,6 +1,6 @@
 #ifndef SORT_ALGO
 #define SORT_ALGO
-
+#include <stddef.h>
 
 /**
  * struct listint_s - Doubly linked list node
