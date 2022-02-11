@@ -1,15 +1,5 @@
 #include "sort.h"
 
-void swap(int *first, int *second)
-{
-	int tmp;
-
-	tmp = *first;
-	*first = * second;
-	*second = tmp;
-}
-
-
 
 void bubble_sort(int *array, size_t size)
 {
