@@ -3,25 +3,40 @@
 
 void insertion_sort_list(listint_t **list)
 {
-    listint_t *tmp;
     listint_t *right = NULL;
     listint_t *left = NULL;
+    listint_t *tmp = *list;
 
-    tmp = *list;
+    if (*list == NULL)
+	    return;
+
+    tmp = (*list)->next;
     while (tmp != NULL)
     {
-	    right = tmp->next;
 	    left = tmp->prev;
-	    while(tmp->next < left->next)
+	    right = tmp->next;
+	    while(left && tmp->n < left->n)
 	    {
-		    tmp->next = right->next;
-                    right->next->prev = tmp;
-                    right->next = tmp;
-                    tmp->prev = right;
+		    if (left->prev != NULL)
+			    left->prev->next = tmp;
 		    left->next = right;
-		    right->prev = left;
+		    tmp->next = left;
+		    tmp->prev = left->prev;
+		    left->prev = tmp;
+		    if (right != NULL)
+			    right->prev = left;
+		    right = left;
+		    left = tmp->prev;
+		    if (left == NULL)
+		    {
+			    *list = tmp;
+			    tmp = tmp->next;
+			    print_list(*list);
+			    break;
+		    }
+		    print_list(*list);
 	    }
-	    tmp = tmp->next;
-	    print_list(*list);
+	    if (left != NULL)
+		    tmp = right;
     }
 }
