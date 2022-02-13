@@ -25,4 +25,5 @@ void swapNode(listint_t *first, listint_t *second);
 void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 void recursion(int *array, int left, int right, size_t size);
+int partition(int *array, int left, int right, size_t size);
 #endif
