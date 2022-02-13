@@ -35,6 +35,22 @@ void recursion(int *array, int left, int right, size_t size)
 }
 
 /**
+ * swap - Swaps the two values first and second
+ * @first: point to the first integer
+ * @second: point to the second integer
+ * Return: Nothing
+ */
+
+void swap(int *first, int *second)
+{
+	int tmp;
+
+	tmp = *first;
+	*first = *second;
+	*second = tmp;
+}
+
+/**
  * partition - function to find the pivot
  * @array: array of numbers
  * @left: value less than the pivot
@@ -68,20 +84,4 @@ int partition(int *array, int left, int right, size_t size)
 		print_array(array, size);
 	}
 	return (i + 1);
-}
-
-/**
- * swap - Swaps the two values first and second
- * @first: point to the first integer
- * @second: point to the second integer
- * Return: Nothing
- */
-
-void swap(int *first, int *second)
-{
-	int tmp;
-
-	tmp = *first;
-	*first = *second;
-	*second = tmp;
 }
