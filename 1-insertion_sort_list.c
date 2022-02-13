@@ -11,11 +11,12 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *right = NULL;
 	listint_t *left = NULL;
-	listint_t *tmp = *list;
+	listint_t *tmp;
 
 	if (*list == NULL || (*list)->next == NULL || list == NULL)
 		return;
 
+	tmp = *list;
 	tmp = (*list)->next;
 	while (tmp != NULL)
 	{
