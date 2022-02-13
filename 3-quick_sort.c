@@ -11,7 +11,7 @@
 
 int partition(int *array, int left, int right, size_t size)
 {
-	int i, j;
+	int i, j, tmp;
 
 	i = left - 1;
 	for (j = left; j < right; j++)
@@ -21,14 +21,18 @@ int partition(int *array, int left, int right, size_t size)
 			i++;
 			if (i != j)
 			{
-				swap(&array[i], &array[j]);
+				tmp = array[i];
+                array[i] = array[j];
+                array[j] = tmp;
 				print_array(array, size);
 			}
 		}
 	}
 	if (array[right > array[i + 1]])
 	{
-		swap(&array[i + 1], &array[right]);
+		tmp = array[i + 1];
+        array[i + 1] = array[j];
+        array[j] = tmp;
 		print_array(array, size);
 	}
 	return (i + 1);
@@ -65,19 +69,4 @@ void recursion(int *array, int left, int right, size_t size)
 		recursion(array, left, pivot - 1, size);
 		recursion(array, pivot + 1, right, size);
 	}
-}
-
-/**
- * swap - Swaps the two values first and second
- * @first: point to the first integer
- * @second: point to the second integer
- * Return: Nothing
- */
-void swap(int *first, int *second)
-{
-	int tmp;
-
-	tmp = *first;
-	*first = *second;
-	*second = tmp;
 }
