@@ -1,4 +1,11 @@
 #include "sort.h"
+/**
+ * selection_sort - repeatedlyfind the lowest element and put it to the
+ * bening of the array
+ * @array: array of number to sort
+ * @size: size of the array
+ * Return: no return because it's a void function
+ */
 
 void selection_sort(int *array, size_t size)
 {
@@ -18,4 +25,20 @@ void selection_sort(int *array, size_t size)
 			print_array(array, size);
 		}
 	}
+}
+
+/**
+ * swap - Swaps the two values first and second
+ * @first: point to the first integer
+ * @second: point to the second integer
+ * Return: Nothing
+ */
+
+void swap(int *first, int *second)
+{
+	int tmp;
+
+	tmp = *first;
+	*first = *second;
+	*second = tmp;
 }
