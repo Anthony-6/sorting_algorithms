@@ -1,43 +1,83 @@
 #include "sort.h"
 
+/**
+ * partition - function to find the pivot
+ * @array: array of numbers
+ * @left: value less than the pivot
+ * @right: value more than the pivot
+ * @size: size of the array
+ * Return: return the array[i] plus 1
+ */
 
-int partition (int *array, size_t size)
+int partition(int *array, int left, int right, size_t size)
 {
-    int i;
-    size_t low = 0;
-    size_t high = (size - 1);
-    size_t j;
-    int pivot = array[high];
+	int i, j;
 
-    for (j = low; j<= high - 1; j++)
-    {
-        if (array[j] < pivot)
-        {
-            i++;
-            swap(&array[i], &array[j]);
-        }
-    }
-    swap(&array[i + 1], &array[high]);
-    return (i + 1);
+	i = left - 1;
+	for (j = left; j < right; j++)
+	{
+		if (array[j] < array[right])
+		{
+			i++;
+			if (i != j)
+			{
+				swap(&array[i], &array[j]);
+				print_array(array, size);
+			}
+		}
+	}
+	if (array[right > array[i + 1]])
+	{
+		swap(&array[i + 1], &array[right]);
+		print_array(array, size);
+	}
+	return (i + 1);
 }
-
-
+/**
+ * quick_sort - this funtion call the recursive function
+ * @array: The pointer on the array of data
+ * @size: The size of the array
+ * Return: return nothing
+ */
 void quick_sort(int *array, size_t size)
 {
-    size_t low = 0;
-    size_t high = (size - 1);
-    size_t pivot = array[high];
-    int recursive;
+	if (size < 2)
+		return;
 
-    if (low < high)
-    {
-        recursive = partition(array, size);
-
-        quick_sort(array, low- 1);
-        quick_sort(array, recursive + 1);
-
-    }
-{
-
+	recursion(array, 0, (int)size - 1, size);
 }
+
+/**
+ * recursion - recursion function for the main function
+ * @array: the pointer on the array of data
+ * @size: the size of the array
+ * @left: value less than the pivot
+ * @right: value more than the pivot
+ * Return: return nothing
+ */
+void recursion(int *array, int left, int right, size_t size)
+{
+	int pivot;
+
+	if (left < right)
+	{
+		pivot = partition(array, left, right, size);
+		recursion(array, left, pivot - 1, size);
+		recursion(array, pivot + 1, right, size);
+	}
+}
+
+/**
+ * swap - Swaps the two values first and second
+ * @first: point to the first integer
+ * @second: point to the second integer
+ * Return: Nothing
+ */
+void swap(int *first, int *second)
+{
+	int tmp;
+
+	tmp = *first;
+	*first = *second;
+	*second = tmp;
 }
