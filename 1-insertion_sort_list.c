@@ -9,8 +9,8 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *right = NULL;
-	listint_t *left = NULL;
+	listint_t *right;
+	listint_t *left;
 	listint_t *tmp;
 
 	if (*list == NULL || (*list)->next == NULL || list == NULL)
@@ -25,7 +25,7 @@ void insertion_sort_list(listint_t **list)
 		{
 			if (left->prev != NULL)
 				left->prev->next = tmp;
-			left->next = right;
+			left->next = tmp->next;
 			tmp->next = left;
 			tmp->prev = left->prev;
 			left->prev = tmp;
