@@ -9,7 +9,7 @@
 void quick_sort(int *array, size_t size)
 {
 	if (size < 2)
-		    return;
+		return;
 
 	recursion(array, 0, (int)size - 1, size);
 }
@@ -63,8 +63,8 @@ int partition(int *array, int left, int right, size_t size)
 	if (array[right > array[i + 1]])
 	{
 		tmp = array[i + 1];
-        array[i + 1] = array[right];
-        array[right] = tmp;
+		array[i + 1] = array[right];
+		array[right] = tmp;
 		print_array(array, size);
 	}
 	return (i + 1);
