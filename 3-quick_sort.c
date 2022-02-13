@@ -15,6 +15,26 @@ void quick_sort(int *array, size_t size)
 }
 
 /**
+ * recursion - recursion function for the main function
+ * @array: the pointer on the array of data
+ * @size: the size of the array
+ * @left: value less than the pivot
+ * @right: value more than the pivot
+ * Return: return nothing
+ */
+void recursion(int *array, int left, int right, size_t size)
+{
+	int pivot;
+
+	if (left < right)
+	{
+		pivot = partition(array, left, right, size);
+		recursion(array, left, pivot - 1, size);
+		recursion(array, pivot + 1, right, size);
+	}
+}
+
+/**
  * partition - function to find the pivot
  * @array: array of numbers
  * @left: value less than the pivot
@@ -48,26 +68,6 @@ int partition(int *array, int left, int right, size_t size)
 		print_array(array, size);
 	}
 	return (i + 1);
-}
-
-/**
- * recursion - recursion function for the main function
- * @array: the pointer on the array of data
- * @size: the size of the array
- * @left: value less than the pivot
- * @right: value more than the pivot
- * Return: return nothing
- */
-void recursion(int *array, int left, int right, size_t size)
-{
-	int pivot;
-
-	if (left < right)
-	{
-		pivot = partition(array, left, right, size);
-		recursion(array, left, pivot - 1, size);
-		recursion(array, pivot + 1, right, size);
-	}
 }
 
 /**
