@@ -61,9 +61,11 @@ void swap(int *first, int *second)
 
 int partition(int *array, int left, int right, size_t size)
 {
-	int i, j, tmp;
+	int i;
+	int j;
 
 	i = left - 1;
+
 	for (j = left; j < right; j++)
 	{
 		if (array[j] < array[right])
@@ -76,11 +78,9 @@ int partition(int *array, int left, int right, size_t size)
 			}
 		}
 	}
-	if (array[right > array[i + 1]])
+	if (array[right] < array[i + 1])
 	{
-		tmp = array[i + 1];
-		array[i + 1] = array[right];
-		array[right] = tmp;
+		swap(&array[i + 1], &array[right]);
 		print_array(array, size);
 	}
 	return (i + 1);
