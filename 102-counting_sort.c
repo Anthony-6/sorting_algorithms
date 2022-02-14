@@ -13,6 +13,8 @@ void counting_sort(int *array, size_t size)
 	int max, i;
 	int *count, *output;
 
+	if (size < 2)
+		return;
 	max = array[0];
 	for (i = 1; i < (int)size; i++)
 		if (array[i] > max)
@@ -38,4 +40,6 @@ void counting_sort(int *array, size_t size)
 	}
 	for (i = 0; i < (int)size; i++)
 		array[i] = output[i];
+	free(count);
+	free(output);
 }
