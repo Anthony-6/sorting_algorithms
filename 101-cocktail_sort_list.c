@@ -40,13 +40,14 @@ void cocktail_sort_list(listint_t **list)
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 	tmp = *list;
+
 	while (tmp->next != NULL)
 	{
 		if (tmp->n > tmp->next->n)
 		{
 			switchnodes(list, &tmp);
 			print_list(*list);
-			}
+		}
 		else
 			tmp = tmp->next;
 	}
@@ -57,7 +58,7 @@ void cocktail_sort_list(listint_t **list)
 		{
 			tmp = tmp->prev;
 			switchnodes(list, &tmp);
-				print_list(*list);
+			print_list(*list);
 		}
 		else
 			tmp = tmp->prev;
