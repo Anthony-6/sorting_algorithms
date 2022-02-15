@@ -1,6 +1,26 @@
 #include "sort.h"
 
 /**
+ * max_array - function that found the max number of the list
+ * @array: pointer int to the array
+ * @max: the number max in the array
+ * @size: the size of the array
+ */
+
+int max_array(int *array, size_t size)
+{
+	int i, max;
+
+	max = array[0];
+	for (i = 1; i < (int)size; i++)
+		if (array[i] > max)
+			max = array[i];
+	max = max + 1;
+	return (max);
+}
+
+
+/**
  * counting_sort - this method create an array with 0
  * add 1 in the index of each number, do the cumulative sum of each instance
  * and finaly reaffect number at the good place
@@ -15,11 +35,7 @@ void counting_sort(int *array, size_t size)
 
 	if (size < 2)
 		return;
-	max = array[0];
-	for (i = 1; i < (int)size; i++)
-		if (array[i] > max)
-			max = array[i];
-	max = max + 1;
+	max = max_array(array, size);
 	count = malloc(sizeof(int) * max);
 	if (count == NULL)
 		return;
