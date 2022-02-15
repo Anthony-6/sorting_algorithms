@@ -5,7 +5,7 @@
 * @nodes: pointer to the nodes structures
 * Return: no return, void function
 */
-void switchnodes(listint_t **list, listint_t **nodes)
+void swapNodes(listint_t **list, listint_t **nodes)
 {
 	listint_t *nodeOne;
 	listint_t *nodeTwo;
@@ -37,35 +37,35 @@ void switchnodes(listint_t **list, listint_t **nodes)
 void cocktail_sort_list(listint_t **list)
 {
 	listint_t *tmp;
-	int i = 0;
+	int checkSwap = 0;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 	tmp = *list;
-	while (i == '\0')
+	while (checkSwap == '\0')
 	{
-		i = 1;
+		checkSwap = 1;
 		while (tmp->next != NULL)
 		{
 			if (tmp->n > tmp->next->n)
 			{
-				i = 0;
-				switchnodes(list, &tmp);
+				checkSwap = 0;
+				swapNodes(list, &tmp);
 				print_list(*list);
 			}
 			else
 				tmp = tmp->next;
 		}
-		if (i != '\0')
+		if (checkSwap != '\0')
 			break;
 		tmp = tmp->prev;
 		while (tmp->prev != NULL)
 		{
 			if (tmp->n < tmp->prev->n)
 			{
-				i = 0;
+				checkSwap = 0;
 				tmp = tmp->prev;
-				switchnodes(list, &tmp);
+				swapNodes(list, &tmp);
 				print_list(*list);
 			}
 			else
