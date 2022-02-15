@@ -28,6 +28,7 @@ void switchnodes(listint_t **list, listint_t **nodes)
 	nodeTwo->prev = nodeThree;
 	*nodes = nodeThree;
 }
+
 /**
  * cocktail_sort_list - sort node with the cocktail sort method
  * @list: pointer to the list
