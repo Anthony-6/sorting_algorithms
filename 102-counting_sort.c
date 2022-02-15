@@ -3,8 +3,8 @@
 /**
  * max_array - function that found the max number of the list
  * @array: pointer int to the array
- * @max: the number max in the array
  * @size: the size of the array
+ * Return: return the maximum value of the array
  */
 
 int max_array(int *array, size_t size)
