@@ -36,31 +36,39 @@ void switchnodes(listint_t **list, listint_t **nodes)
 void cocktail_sort_list(listint_t **list)
 {
 	listint_t *tmp;
+	int i = 0;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 	tmp = *list;
-
-	while (tmp->next != NULL)
+	while (i == '\0')
 	{
-		if (tmp->n > tmp->next->n)
+		i = 1;
+		while (tmp->next != NULL)
 		{
-			switchnodes(list, &tmp);
-			print_list(*list);
+			if (tmp->n > tmp->next->n)
+			{
+				i = 0;
+				switchnodes(list, &tmp);
+				print_list(*list);
+			}
+			else
+				tmp = tmp->next;
 		}
-		else
-			tmp = tmp->next;
-	}
-	tmp = tmp->prev;
-	while (tmp->prev != NULL)
-	{
-		if (tmp->n < tmp->prev->n)
+		if (i != '\0')
+			break;
+		tmp = tmp->prev;
+		while (tmp->prev != NULL)
 		{
-			tmp = tmp->prev;
-			switchnodes(list, &tmp);
-			print_list(*list);
+			if (tmp->n < tmp->prev->n)
+			{
+				i = 0;
+				tmp = tmp->prev;
+				switchnodes(list, &tmp);
+				print_list(*list);
+			}
+			else
+				tmp = tmp->prev;
 		}
-		else
-			tmp = tmp->prev;
 	}
 }
